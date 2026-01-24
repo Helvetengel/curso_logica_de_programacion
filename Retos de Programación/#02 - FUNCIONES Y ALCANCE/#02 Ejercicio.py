@@ -50,15 +50,52 @@ def variable_key_arg_greet(**names):
     for key, value in names.items():
         print(f"Hola,{value}({key})!")
 variable_key_arg_greet(
-    language = "Python"
-    name = "Lexi"
-    alias = "Helvetengel"
+    language = "Python",
+    name = "Lexi",
+    alias = "Helvetengel",
     age = "18"
 )
 
 
 #Función dentro de una función
+def outside():
+    def inside():
+        print("Función interna")
+    inside()
+    print("Función externa")
+outside()
 
-#Función ya creada en el lenguaje
+
+#Función ya creada en el lenguaje (built-in)
+print(len("Lexi"))     #longitud del dato (4)
+print(type("Lexi"))    #tipo del dato (string/str)
+print("Lexi".upper())  #pone los datos en mayúscula (LEXI)
+
 
 #Variable global - Variable local
+global_var = "Python"
+def hello_python():
+    local_var = "Hola"
+    print(f"{local_var}, {global_var}!")
+print(global_var)
+#print(local_var) NO SE PUEDE ACCEDER DESDE FUERA DE LA FUNCIÓN
+hello_python()
+
+
+
+#DIFICULTAD EXTRA
+
+def fun_num(str1, str2)->int:
+    count = 0
+    for number in range(1,101):
+        if number % 3 == 0 and number % 5 == 0:
+            print(str1 + str2)
+        elif number % 3 == 0:
+            print(str1)
+        elif number % 5 == 0:
+            print(str2)
+        else:
+            print(number)
+            count += 1
+    return count
+print(fun_num("Text 1", "Text 2"))         #Ejercicio Fizz Buzz

@@ -39,38 +39,52 @@ my_dict = dict(sorted(my_dict.items())) #ordenación: se ordena con sorted(), pe
 #DIFICULTAD EXTRA
 
 def agenda():
-    agenda_de_contactos: dict = {}
+    agenda_de_contactos: dict = {"Lexi":"294294294", "Charson":"666666666", "Sywar":"4815162342"}
     while True:
+        print("***AGENDA***") #título
         print("1 - Búsqueda")
         print("2 - Inserción")
         print("3 - Actualización")
         print("4 - Eliminación")
         print("5 - Salir del programa")
         print("Escriba el número de la operación que desea realizar:")
-        numero = input()
-        if numero == "1":
-            print("Escriba el número del contacto a buscar:")
-            eleccion = input()
-            if type(eleccion) != int or len(eleccion) > 11:
-                print("Ingrese un número entero de 11 o menos dígitos")
-        elif numero == "2":
-            print("Escriba el número del contacto a insertar")
-            eleccion = input()
-            if type(eleccion) != int or len(eleccion) > 11:
-                print("Ingrese un número entero de 11 o menos dígitos")
-        elif numero == "3":
-            print("Escriba el número del contacto a actualizar")
-            eleccion = input()
-            if type(eleccion) != int or len(eleccion) > 11:
-                print("Ingrese un número entero de 11 o menos dígitos")
-        elif numero == "4":
-            print("Escriba el número del contacto a eliminar")
-            eleccion = input()
-            if type(eleccion) != int or len(eleccion) > 11:
-                print("Ingrese un número entero de 11 o menos dígitos")
-        elif numero == "5":
-            print("Programa finalizado")
-            break
-        else:
-            print("Opción rechazada")
+        numero = int(input())
+
+        match numero:
+            case 1:
+                nombre = input("Ingrese el nombre del contacto que quiera buscar: ")
+                if nombre in agenda_de_contactos:
+                    print(f"El número de {nombre} es: {agenda_de_contactos[nombre]}")
+                else:
+                    print("Contacto no encontrado")
+
+            case 2:
+                nombre = input("Introduzca el nombre de su nuevo contacto: ")
+                numero_de_telefono = input("Introduzca el número de su nuevo contacto: ")
+                if type(numero_de_telefono) != int and len(numero_de_telefono) > 11:
+                    print("Error, por favor ingrese un valor numérico menor a 11 dígitos")
+                else:
+                    print("Contacto guardado con éxito")
+                agenda_de_contactos[nombre] = numero_de_telefono
+
+            case 3:
+               nombre = input("Ingrese el nombre del contacto a actualizar: ")
+               nuevo_num = input("Introduzca el nuevo número del contacto: ")
+               if type(nuevo_num) != int and len(nuevo_num) > 11:
+                    print("Error, por favor ingrese un valor numérico menor a 11 dígitos")
+               else:
+                print("Contacto actualizado con éxito")
+               agenda_de_contactos[nombre] = nuevo_num
+
+            case 4:
+                nombre = input("Ingrese el nombre del contacto a eliminar: ")
+                del agenda_de_contactos[nombre]
+                print("Contacto eliminado con éxito")
+
+            case 5:
+                print("Programa finalizado")
+                break
+            case _:
+                print("Opción rechazada")
+
 agenda()

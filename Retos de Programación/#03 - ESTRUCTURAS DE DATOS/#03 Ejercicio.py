@@ -40,6 +40,7 @@ my_dict = dict(sorted(my_dict.items())) #ordenación: se ordena con sorted(), pe
 
 def agenda():
     agenda_de_contactos: dict = {"Lexi":"294294294", "Charson":"666666666", "Sywar":"4815162342"}
+    
     while True:
         print("***AGENDA***") #título
         print("1 - Búsqueda")
@@ -69,12 +70,14 @@ def agenda():
 
             case 3:
                nombre = input("Ingrese el nombre del contacto a actualizar: ")
+               nuevo_nom = input("Introduzca el nuevo nombre del contacto: ")
                nuevo_num = input("Introduzca el nuevo número del contacto: ")
                if type(nuevo_num) != int and len(nuevo_num) > 11:
                     print("Error, por favor ingrese un valor numérico menor a 11 dígitos")
                else:
                 print("Contacto actualizado con éxito")
-               agenda_de_contactos[nombre] = nuevo_num
+                del agenda_de_contactos[nombre]
+               agenda_de_contactos[nuevo_nom] = nuevo_num
 
             case 4:
                 nombre = input("Ingrese el nombre del contacto a eliminar: ")
